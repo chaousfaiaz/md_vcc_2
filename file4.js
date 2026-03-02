@@ -31,6 +31,6 @@ try {
 } catch (error) {
     alert(error.message);
     console.error(error.message);
-}
+
 
 
