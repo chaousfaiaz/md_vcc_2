@@ -1,0 +1,51 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+<meta charset="UTF-8">
+<meta name="viewport" content="width=device-width, initial-scale=1.0">
+<title>Login Page</title>
+<style>
+    body { font-family: Arial, sans-serif; background: #f4f4f4; }
+    .login-container {
+        width: 300px; margin: 100px auto; padding: 20px;
+        background: white; border-radius: 8px; box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+    input[type="text"], input[type="password"] {
+        width: 100%; padding: 10px; margin: 8px 0;
+        border: 1px solid #ccc; border-radius: 4px;
+    }
+    button {
+        width: 100%; padding: 10px; background: #28a745;
+        color: white; border: none; border-radius: 4px; cursor: pointer;
+    }
+    button:hover { background: #218838; }
+    .error { color: red; font-size: 0.9em; }
+</style>
+</head>
+<body>
+
+<div class="login-container">
+    <h2>Login</h2>
+    <form id="loginForm" method="POST" action="authenticate.php">
+        <input type="text" name="username" id="username" placeholder="Username" required>
+        <input type="password" name="password" id="password" placeholder="Password" required>
+        <p class="error" id="errorMsg"></p>
+        <button type="submit">Login</button>
+    </form>
+</div>
+
+<script>
+document.getElementById("loginForm").addEventListener("submit", function(event) {
+    let username = document.getElementById("username").value.trim();
+    let password = document.getElementById("password").value.trim();
+    let errorMsg = document.getElementById("errorMsg");
+
+    if (username.length < 3 || password.length < 5) {
+        errorMsg.textContent = "Username must be at least 3 chars and password at least 5 chars.";
+        event.preventDefault(); // Stop form submission
+    }
+});
+</script>
+
+</body>
+</html>
